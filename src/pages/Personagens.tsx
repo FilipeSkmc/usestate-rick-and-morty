@@ -11,33 +11,27 @@ function Personagens() {
 
   useEffect(() => {
     setLoading(true);
-
+    // Para usar o async/await dentro do useEffect, é necessário criar uma função
     const loadingData = async () => {
       const data = await getCharacters(page);
       setPersonagens(data);
       setLoading(false);
     };
 
-    const timer = setTimeout(() => {
-      loadingData();
-    }, 1000);
+    // chama a função
+    loadingData();
 
-    return () => {
-      clearTimeout(timer);
-      console.log('clearTimeout');
-    };
+    // o page é uma dependência do useEffect, então toda vez que ele mudar, o useEffect será executado novamente, assim, fazendo uma nova requisição para a API, com o novo valor de page
   }, [page]);
 
-  const disablePrevPage = page === 1;
-  const disableNextPage = page === 10;
-
+  // Se o loading for true, renderiza o componente Loading
   if (loading) return <Loading />;
   return (
     <>
       <h2>Personagens</h2>
       <div className="options">
         <button
-          disabled={ disablePrevPage }
+          disabled={ page === 1 }
           onClick={ () => setPage(page - 1) }
         >
           Anterior
@@ -46,7 +40,7 @@ function Personagens() {
         <span>{`Página ${page}`}</span>
 
         <button
-          disabled={ disableNextPage }
+          disabled={ page === 10 }
           onClick={ () => setPage(page + 1) }
         >
           Próximo

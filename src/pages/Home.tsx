@@ -8,7 +8,9 @@ function Home() {
   const [episodios, setEpisodios] = useState<EpisodeType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // useEffect que faz a requisição da API
   useEffect(() => {
+    // Para usar o async/await dentro do useEffect, é necessário criar uma função
     const loadingData = async () => {
       const data = await getEpisodes();
       console.log(data);
@@ -16,16 +18,20 @@ function Home() {
       setLoading(false);
     };
 
+    // setTimeout para simular o carregamento da API
     const timer = setTimeout(() => {
       loadingData();
-    }, 3000);
+    }, 1000);
 
+    // Limpa o setTimeout caso o componente seja desmontado
     return () => {
       clearTimeout(timer);
-      console.log('clearTimeout');
     };
+
+    // Observação: Não é necessário usar o timer, estamos usando apenas para simular o carregamento da API, bastaria usar o loadingData() diretamente. Acesse o componente Personagens para ver um exemplo sem o timer.
   }, []);
 
+  // Se o loading for true, renderiza o componente Loading
   if (loading) return (<Loading />);
   return (
     <>
