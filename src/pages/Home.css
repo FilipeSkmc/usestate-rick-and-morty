@@ -1,0 +1,28 @@
+.container {
+  /* background-color: antiquewhite; */
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container img {
+  width: 40vw;
+  height: 40vh;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.card {
+  background-color: #19b8cd;
+  width: 40vw;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
