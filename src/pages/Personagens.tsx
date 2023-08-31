@@ -21,7 +21,9 @@ function Personagens() {
     // chama a função
     loadingData();
 
-    // o page é uma dependência do useEffect, então toda vez que ele mudar, o useEffect será executado novamente, assim, fazendo uma nova requisição para a API, com o novo valor de page
+    // o page é uma dependência do useEffect, então toda vez que ele mudar,
+    // o useEffect será executado novamente, assim,
+    // fazendo uma nova requisição para a API, com o novo valor de page
   }, [page]);
 
   // Se o loading for true, renderiza o componente Loading

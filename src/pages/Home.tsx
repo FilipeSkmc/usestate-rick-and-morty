@@ -28,7 +28,9 @@ function Home() {
       clearTimeout(timer);
     };
 
-    // Observação: Não é necessário usar o timer, estamos usando apenas para simular o carregamento da API, bastaria usar o loadingData() diretamente. Acesse o componente Personagens para ver um exemplo sem o timer.
+    // Observação: Não é necessário usar o timer, estamos usando apenas para
+    // simular o carregamento da API, bastaria usar o loadingData() diretamente.
+    // Acesse o componente Personagens para ver um exemplo sem o timer.
   }, []);
 
   // Se o loading for true, renderiza o componente Loading
