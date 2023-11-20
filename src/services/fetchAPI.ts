@@ -12,7 +12,6 @@ export const getEpisodes = async (): Promise<EpisodeType[]> => {
     name: episode.name,
     air_date: episode.air_date,
     episode: episode.episode,
-    characters: episode.characters,
   }));
 };
 

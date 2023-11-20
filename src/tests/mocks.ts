@@ -62,3 +62,50 @@ export const mockPage2 = [
     species: 'Alien',
   },
 ];
+
+export const mockEpisode = [
+  {
+    id: 1,
+    name: 'Pilot',
+    air_date: 'December 2, 2013',
+    episode: 'S01E01',
+  },
+  {
+    id: 2,
+    name: 'Lawnmower Dog',
+    air_date: 'December 9, 2013',
+    episode: 'S01E02',
+  },
+  {
+    id: 3,
+    name: 'Anatomy Park',
+    air_date: 'December 16, 2013',
+    episode: 'S01E03',
+  },
+  {
+    id: 4,
+    name: 'M. Night Shaym-Aliens!',
+    air_date: 'January 13, 2014',
+    episode: 'S01E04',
+  },
+];
+
+export const mockDataPage1 = {
+  info: {
+    count: 826,
+    pages: 42,
+    next: 'https://rickandmortyapi.com/api/character/?page=2',
+    prev: null,
+  },
+  results: mockPage1,
+};
+
+export const mockDataPage2 = {
+  info: {
+    count: 826,
+    pages: 42,
+    next: 'https://rickandmortyapi.com/api/character/?page=2',
+    prev: null,
+  },
+  results: mockPage2,
+};
