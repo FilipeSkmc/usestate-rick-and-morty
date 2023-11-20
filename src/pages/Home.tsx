@@ -3,9 +3,10 @@ import { getEpisodes } from '../services/fetchAPI';
 import { EpisodeType } from '../utils/types';
 import Loading from '../components/Loading';
 import './Home.css';
+import EpisodeCard from '../components/EpisodeCard';
 
 function Home() {
-  const [episodios, setEpisodios] = useState<EpisodeType[]>([]);
+  const [episodes, setEpisodes] = useState<EpisodeType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   // useEffect que faz a requisição da API
@@ -14,7 +15,7 @@ function Home() {
     const loadingData = async () => {
       const data = await getEpisodes();
       console.log(data);
-      setEpisodios(data);
+      setEpisodes(data);
       setLoading(false);
     };
 
@@ -40,12 +41,8 @@ function Home() {
       <h2>Lista de episódios</h2>
 
       <div className="container">
-        {episodios.map((episodio) => (
-          <div key={ episodio.id } className="card">
-            <h4>{episodio.name}</h4>
-            <p>{episodio.air_date}</p>
-            <p>{episodio.episode}</p>
-          </div>
+        {episodes.map((episode) => (
+          <EpisodeCard key={ episode.id } episode={ episode } />
         ))}
       </div>
     </>
