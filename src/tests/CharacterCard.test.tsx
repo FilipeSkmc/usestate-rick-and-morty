@@ -4,6 +4,7 @@ import renderWithRouter from './helpers/renderWithRouter';
 import CharacterCard from '../components/CharacterCard';
 
 it('Testando o Card de Personagem', async () => {
+  // mock da props character, para verificar se o componente está recebendo as props corretamente
   const characterMock = {
     id: 1,
     image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
@@ -12,8 +13,10 @@ it('Testando o Card de Personagem', async () => {
     species: 'Human',
   };
 
+  // Como o componente CharacterCard recebe uma props character, eu preciso passar essa props para ele
   renderWithRouter(<CharacterCard character={ characterMock } />);
 
+  // Espero que o nome, o status, a espécie e a imagem do personagem estejam na tela
   const name = screen.getByRole('heading', {
     name: /rick sanchez/i,
   });
@@ -23,6 +26,7 @@ it('Testando o Card de Personagem', async () => {
     name: /rick sanchez/i,
   });
 
+  // Espero que o nome, o status, a espécie e a imagem do personagem estejam na tela
   expect(name).toBeInTheDocument();
   expect(status).toBeInTheDocument();
   expect(species).toBeInTheDocument();

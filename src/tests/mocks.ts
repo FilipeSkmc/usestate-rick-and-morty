@@ -1,5 +1,4 @@
-// mock para simular o RETORNO DA FUNÇÃO getCharacters
-
+// será usado dentro do objeto mockDataPage1 na chave results
 export const mockPage1 = [
   {
     id: 1,
@@ -31,7 +30,7 @@ export const mockPage1 = [
   },
 ];
 
-// mock para simular o RETORNO DA FUNÇÃO getCharacters
+// será usado dentro do objeto mockDataPage2 na chave results
 export const mockPage2 = [
   {
     id: 21,
@@ -63,6 +62,7 @@ export const mockPage2 = [
   },
 ];
 
+// mock usado para simular o retorno da função getEpisodes
 export const mockEpisode = [
   {
     id: 1,
@@ -90,21 +90,23 @@ export const mockEpisode = [
   },
 ];
 
+// mock usado para simular o retorno da função getCharacters com dados da página 1
 export const mockDataPage1 = {
   info: {
     count: 826,
-    pages: 42,
+    pages: 1,
     next: 'https://rickandmortyapi.com/api/character/?page=2',
     prev: null,
   },
   results: mockPage1,
 };
 
+// mock usado para simular o retorno da função getCharacters com dados da página 2
 export const mockDataPage2 = {
   info: {
     count: 826,
-    pages: 42,
-    next: 'https://rickandmortyapi.com/api/character/?page=2',
+    pages: 2,
+    next: 'https://rickandmortyapi.com/api/character/?page=3',
     prev: null,
   },
   results: mockPage2,
