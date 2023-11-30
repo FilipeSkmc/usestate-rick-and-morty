@@ -2,8 +2,15 @@ import { CharacterType, EpisodeType } from '../utils/types';
 
 // Esta função retorna uma Promise que resolve em um array de episódios
 export const getEpisodes = async (): Promise<EpisodeType[]> => {
-  const response = await fetch('https://rickandmortyapi.com/api/episode');
+  const endpoint = 'https://rickandmortyapi.com/api/episode';
+
+  console.log(endpoint);
+
+  const response = await fetch(endpoint);
   const data = await response.json();
+
+  console.log(data);
+
   const { results } = data;
   // O map abaixo retorna um array de objetos com as propriedades
   // id, name, air_date, episode e characters
@@ -19,8 +26,15 @@ export const getEpisodes = async (): Promise<EpisodeType[]> => {
 // ela recebe um index como parâmetro,
 // que é o número da página que será buscada
 export const getCharacters = async (index: number): Promise<CharacterType[]> => {
-  const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${index}`);
+  const endpoint = (`https://rickandmortyapi.com/api/character/?page=${index}`);
+
+  console.log(endpoint);
+
+  const response = await fetch(endpoint);
   const data = await response.json();
+
+  console.log(data);
+
   const { results } = data;
   // O map abaixo retorna um array de objetos com as propriedades
   // id, image, name, status e species
