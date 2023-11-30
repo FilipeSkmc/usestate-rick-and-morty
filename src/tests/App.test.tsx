@@ -7,6 +7,7 @@ import renderWithRouter from './helpers/renderWithRouter';
 import mockFetch from './mocks/fetch';
 
 beforeEach(() => {
+  // espiona a função global.fetch e substitui por uma função mockada
   vi.spyOn(global, 'fetch').mockImplementation(mockFetch as any);
 });
 
