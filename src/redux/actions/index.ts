@@ -4,6 +4,8 @@ import { getCharacters, getEpisodes } from '../../services/fetchAPI';
 
 export const ADD_EPISODES = 'ADD_EPISODES';
 export const ADD_CHARACTERS = 'ADD_CHARACTERS';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 export const START_REQUEST = 'START_REQUEST';
 export const SUCCESS_REQUEST = 'SUCCESS_REQUEST';
 export const ERROR_REQUEST = 'ERROR_REQUEST';
@@ -15,6 +17,16 @@ export const addEpisodes = (payload: EpisodeType[]) => ({
 
 export const addCharacters = (payload: CharacterType[]) => ({
   type: ADD_CHARACTERS,
+  payload,
+});
+
+export const addFavorite = (payload: CharacterType) => ({
+  type: ADD_FAVORITE,
+  payload,
+});
+
+export const removeFavorite = (payload: CharacterType) => ({
+  type: REMOVE_FAVORITE,
   payload,
 });
 

@@ -16,9 +16,14 @@ export type CharacterType = {
   'image': string,
 };
 
+export type CharacterReducerType = {
+  listCharacters: CharacterType[],
+  favorites: CharacterType[],
+};
+
 export type RootReducerType = {
   episodes: EpisodeType[],
-  characters: CharacterType[],
+  characters: CharacterReducerType,
 };
 
 export type AnyDispatch = ThunkDispatch<RootReducerType, null, AnyAction>;
