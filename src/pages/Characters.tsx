@@ -1,34 +1,27 @@
 import { useEffect, useState } from 'react';
-import { getCharacters } from '../services/fetchAPI';
+import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../components/Loading';
-import { CharacterType } from '../utils/types';
-import './Characters.css';
+import { AnyDispatch, RootReducerType } from '../utils/types';
 import CharacterCard from '../components/CharacterCard';
+
+import './Characters.css';
+import { fetchCharacters } from '../redux/actions';
 
 function Characters() {
   const [page, setPage] = useState(1);
-  const [characters, setCharacters] = useState<CharacterType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const characters = useSelector((state: RootReducerType) => state.characters);
+  const dispatch: AnyDispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-    // Para usar o async/await dentro do useEffect, é necessário criar uma função
-    const loadingData = async () => {
-      const data = await getCharacters(page);
-      setCharacters(data);
-      setLoading(false);
-    };
-
-    // chama a função
-    loadingData();
+    dispatch(fetchCharacters(page));
 
     // o page é uma dependência do useEffect, então toda vez que ele mudar,
     // o useEffect será executado novamente, assim,
     // fazendo uma nova requisição para a API, com o novo valor de page
-  }, [page]);
+  }, [page, dispatch]);
 
   // Se o loading for true, renderiza o componente Loading
-  if (loading) return <Loading />;
+  if (characters.length < 1) return <Loading />;
   return (
     <>
       <h2>Personagens</h2>
@@ -51,9 +44,9 @@ function Characters() {
       </div>
 
       <div className="list-personagens">
-        {characters.map((character) => (
+        {characters.map((character, index) => (
           <CharacterCard
-            key={ character.id }
+            key={ index }
             character={ character }
           />
         ))}

@@ -1,28 +1,25 @@
-import { useEffect, useState } from 'react';
-import { getEpisodes } from '../services/fetchAPI';
-import { EpisodeType } from '../utils/types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyDispatch, RootReducerType } from '../utils/types';
 import Loading from '../components/Loading';
 import EpisodeCard from '../components/EpisodeCard';
 import './Home.css';
+import { fetchEpisodes } from '../redux/actions';
 
 function Home() {
-  const [episodes, setEpisodes] = useState<EpisodeType[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // useSelector é um hook que permite acessar o estado global, estou usando para pegar o array de episódios
+  const { episodes } = useSelector((state: RootReducerType) => state);
+  // o useDispatch é um hook que permite disparar uma action para o reducer
+  const dispatch: AnyDispatch = useDispatch();
 
   // useEffect que faz a requisição da API
   useEffect(() => {
-    // Para usar o async/await dentro do useEffect, é necessário criar uma função
-    const loadingData = async () => {
-      const data = await getEpisodes();
-      setEpisodes(data);
-      setLoading(false);
-    };
-
-    loadingData();
+    // o dispatch dispara a action que faz a requisição da API, que no caso é uma action assíncrona
+    dispatch(fetchEpisodes());
   }, []);
 
-  // Se o loading for true, renderiza o componente Loading
-  if (loading) return (<Loading />);
+  // Se o arrau de episodios estiver vazio, renderiza o componente Loading
+  if (episodes.length < 1) return (<Loading />);
   return (
     <>
       <h2>Lista de episódios</h2>

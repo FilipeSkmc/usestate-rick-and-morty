@@ -1,3 +1,6 @@
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
 export type EpisodeType = {
   'id': number,
   'name': string,
@@ -12,3 +15,10 @@ export type CharacterType = {
   'species': string,
   'image': string,
 };
+
+export type RootReducerType = {
+  episodes: EpisodeType[],
+  characters: CharacterType[],
+};
+
+export type AnyDispatch = ThunkDispatch<RootReducerType, null, AnyAction>;
