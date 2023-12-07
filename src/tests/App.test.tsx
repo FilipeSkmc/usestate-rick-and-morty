@@ -4,11 +4,12 @@ import { vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
-import mockFetch from './mocks/fetch';
+import fetchMock from './mocks/fetchMock';
 
 beforeEach(() => {
   // espiona a função global.fetch e substitui por uma função mockada
-  vi.spyOn(global, 'fetch').mockImplementation(mockFetch as any);
+  // toda vez que a função global.fetch for chamada, ela vai chamar a função mockada
+  vi.spyOn(global, 'fetch').mockImplementation(fetchMock as any);
 });
 
 describe('Testando a chamada de api', () => {
