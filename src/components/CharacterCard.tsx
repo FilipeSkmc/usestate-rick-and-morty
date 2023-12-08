@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { CharacterType, RootReducerType } from '../utils/types';
-import { addCharacters, addFavorite, removeFavorite } from '../redux/actions';
+import { addFavorite, removeFavorite } from '../redux/actions';
 
 type CharacterCardProps = {
   character: CharacterType,
@@ -23,7 +23,6 @@ function CharacterCard({ character }: CharacterCardProps) {
   return (
     <div
       className="persona-card"
-      // onClick={ () => dispatch(addFavorite(character)) }
     >
       <h4>{character.name}</h4>
       <img src={ character.image } alt={ character.name } />

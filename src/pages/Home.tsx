@@ -18,7 +18,7 @@ function Home() {
     dispatch(fetchEpisodes());
   }, []);
 
-  // Se o arrau de episodios estiver vazio, renderiza o componente Loading
+  // Se o array de episodios estiver vazio, renderiza o componente Loading
   if (episodes.length < 1) return (<Loading />);
   return (
     <>
